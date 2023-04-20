@@ -1,3 +1,5 @@
+import Factory from "../fixtures/factory"
+
 
 const URL_USUARIOS  = '/usuarios'
 const URL_LOGIN     = '/login'
@@ -42,19 +44,16 @@ static buscarProdutos(){
 }
 
 static cadastrarProdutoComSucesso(){
+    let produto = Factory.gerarProduto()
+
     return cy.request({
         method: 'POST',
         url: URL_PRODUTOS,
         failOnStatusCode: true,
-        auth: {
+        /*auth: {
             bearer: Cypress.env("bearer")
-        },
-        body: {
-            "nome": "C3 MT Horizontal",
-            "preco": 350,
-            "descricao": "Carro",
-            "quantidade": 7
-        }
+        },*/
+        body:produto
     })
 }
 }
