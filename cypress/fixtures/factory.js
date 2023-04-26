@@ -10,4 +10,8 @@ export default class Factory {
             "quantidade": faker.datatype.number()
         }
     }
+
+    static gerarInteiroAleatorio(){
+        return faker.datatype.number(5)
+    }
 }
