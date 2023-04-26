@@ -6,18 +6,28 @@ export default class validaServerest {
     //Validar cadastrar de novos usuários
     //Validar o login
     
+    // Usuários //
+
     static validarBuscaDeUsuarios(resposta){
         expect(resposta).to.be.a('object')
+        expect(resposta.body).exist
+        expect(resposta.body.quantidade).exist
         expect(resposta.body.quantidade).to.be.a('number')
+        expect(resposta.body).to.have.property('usuarios')
+        expect(resposta.body.usuarios).to.be.a('array')
         expect(resposta.body.quantidade).to.be.greaterThan(3)
 
     }
 
+    // Login //
+
     static validarLoginComSucesso(resposta){
         expect(resposta).to.be.a('object')
         expect(resposta.body.message).to.be.a('string')
-        //expect(resposta.body).to.haveOwnProperty('authorization')
+        expect(resposta.body).to.haveOwnProperty('authorization')
     }
+
+    // Produtos //
 
     static validarBuscaDeProdutos(resposta){
         expect(resposta).to.be.a('object')

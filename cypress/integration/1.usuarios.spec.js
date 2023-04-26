@@ -6,7 +6,7 @@ import Factory from "../fixtures/factory"
 
 describe('Casos de testes sobre a rota /usuarios da API Serverest', () => {
 
-    it.only('Deve buscar todos usuários cadastrados na Serverest', () => {
+    it('Deve buscar todos usuários cadastrados na Serverest', () => {
         Serverest.buscarUsuarios().then( res => {
             validaServerest.validarBuscaDeUsuarios(res)
         })
@@ -19,6 +19,14 @@ describe('Casos de testes sobre a rota /usuarios da API Serverest', () => {
             expect(res).to.be.a('object')
             expect(res.body.message).to.be.a('string')
             expect(res.body.message).to.be.eq('Este email já está sendo usado')
+        })
+    })
+
+    it('Deve buscar e salvar um usuário em um arquivo json', () => {
+        let inteiro = Factory.gerarInteiroAleatorio()
+         Serverest.buscarUsuarios().then( res => {
+            cy.writeFile('./cypress/fixtures/usuario.json', res.body.usuarios[inteiro])
+            validaServerest.validarBuscaDeUsuarios(res)
         })
     })
 
@@ -38,11 +46,5 @@ describe('Casos de testes sobre a rota /usuarios da API Serverest', () => {
         })
     })
 
-    it('Deve buscar e salvar um usuário em um arquivo json', () => {
-        let inteiro = Factory.gerarInteiroAleatorio()
-         Serverest.buscarUsuarios().then( res => {
-            cy.writeFile('./cypress/fixtures/usuario.json', res.body.usuarios[inteiro])
-            validaServerest.validarBuscaDeUsuarios(res)
-        })
-    })
+
 })

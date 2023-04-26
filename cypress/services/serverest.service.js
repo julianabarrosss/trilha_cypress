@@ -13,6 +13,8 @@ export default class Serverest {
 //Cadastrar novos usuários
 //Realizar login
 
+// Usuários //
+
 static buscarUsuarios(){
     return cy.rest('GET', URL_USUARIOS)
 }
@@ -27,6 +29,8 @@ static buscarUsuarioParaLogin(){
     })
         
 }
+
+// Login //
 
 static logar(usuario){
     return cy.rest('POST', URL_LOGIN, usuario)
@@ -56,4 +60,5 @@ static cadastrarProdutoComSucesso(){
         body:produto
     })
 }
+
 }
