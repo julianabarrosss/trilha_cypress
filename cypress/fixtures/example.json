@@ -1,5 +1,124 @@
-{
-  "name": "Using fixtures to represent data",
-  "email": "hello@cypress.io",
-  "body": "Fixtures are a great way to mock data for responses to routes"
+{"$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "default": {},
+    "title": "Root Schema",
+    "required": [
+        "quantidade",
+        "usuarios"
+    ],
+    "properties": {
+        "quantidade": {
+            "type": "integer",
+            "default": 0,
+            "title": "The quantidade Schema",
+            "examples": [
+                2
+            ]
+        },
+        "usuarios": {
+            "type": "array",
+            "default": [],
+            "title": "The usuarios Schema",
+            "items": {
+                "type": "object",
+                "title": "A Schema",
+                "required": [
+                    "nome",
+                    "email",
+                    "password",
+                    "administrador",
+                    "_id"
+                ],
+                "properties": {
+                    "nome": {
+                        "type": "string",
+                        "title": "The nome Schema",
+                        "examples": [
+                            "Fulano da Silva",
+                            "{{generatedName}}"
+                        ]
+                    },
+                    "email": {
+                        "type": "string",
+                        "title": "The email Schema",
+                        "examples": [
+                            "fulano@qa.com",
+                            "Eliseo14@example.org"
+                        ]
+                    },
+                    "password": {
+                        "type": "string",
+                        "title": "The password Schema",
+                        "examples": [
+                            "teste"
+                        ]
+                    },
+                    "administrador": {
+                        "type": "string",
+                        "title": "The administrador Schema",
+                        "examples": [
+                            "true"
+                        ]
+                    },
+                    "_id": {
+                        "type": "string",
+                        "title": "The _id Schema",
+                        "examples": [
+                            "0uxuPY0cbmQhpEz1",
+                            "AjNnfWckcOFWFLJJ"
+                        ]
+                    }
+                },
+                "examples": [{
+                    "nome": "Fulano da Silva",
+                    "email": "fulano@qa.com",
+                    "password": "teste",
+                    "administrador": "true",
+                    "_id": "0uxuPY0cbmQhpEz1"
+                },
+                {
+                    "nome": "{{generatedName}}",
+                    "email": "Eliseo14@example.org",
+                    "password": "teste",
+                    "administrador": "true",
+                    "_id": "AjNnfWckcOFWFLJJ"
+                }]
+            },
+            "examples": [
+                [{
+                    "nome": "Fulano da Silva",
+                    "email": "fulano@qa.com",
+                    "password": "teste",
+                    "administrador": "true",
+                    "_id": "0uxuPY0cbmQhpEz1"
+                },
+                {
+                    "nome": "{{generatedName}}",
+                    "email": "Eliseo14@example.org",
+                    "password": "teste",
+                    "administrador": "true",
+                    "_id": "AjNnfWckcOFWFLJJ"
+                }]
+            ]
+        }
+    },
+    "examples": [{
+        "quantidade": 2,
+        "usuarios": [{
+            "nome": "Fulano da Silva",
+            "email": "fulano@qa.com",
+            "password": "teste",
+            "administrador": "true",
+            "_id": "0uxuPY0cbmQhpEz1"
+        },
+        {
+            "nome": "{{generatedName}}",
+            "email": "Eliseo14@example.org",
+            "password": "teste",
+            "administrador": "true",
+            "_id": "AjNnfWckcOFWFLJJ"
+        }]
+    }]
+    
 }
