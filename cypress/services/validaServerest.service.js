@@ -10,15 +10,10 @@ export default class validaServerest {
 
     static validarBuscaDeUsuarios(resposta){
         expect(resposta).to.be.a('object')
-        expect(resposta.body).exist
-        expect(resposta.body.quantidade).exist
         expect(resposta.body.quantidade).to.be.a('number')
         expect(resposta.body).to.have.property('usuarios')
         expect(resposta.body.usuarios).to.be.a('array')
-        //let usuarios = resposta.body.usuarios
-        //for (let each in usuarios)
-
-        //expect(resposta.body.quantidade).to.be.greaterThan(3)
+        expect(resposta.body.quantidade).to.be.greaterThan(3)
 
     }
 
