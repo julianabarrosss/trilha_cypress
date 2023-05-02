@@ -24,6 +24,13 @@
 
 //const { method } = require("cypress/types/bluebird")
 
+import Ajv from 'ajv'
+const ajv = new Ajv({allErrors: true, verbose: true, strict: false})
+
+Cypress.Commands.add('contractValidation', () =>{
+
+})
+
 Cypress.Commands.add('postarUsuarioSemSucesso', () => {
     return cy.request({
         method: 'POST',
