@@ -22,8 +22,6 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-//const { method } = require("cypress/types/bluebird")
-
 import Ajv from 'ajv'
 const ajv = new Ajv({allErrors: true, verbose: true, strict: false})
 
@@ -33,7 +31,7 @@ Cypress.Commands.add('contractValidation', (res, schema, status) =>{
         const valid = validate(res.body)
 
         if(!valid){
-            
+            console.log(validate)
         }
     })
 })

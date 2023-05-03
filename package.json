@@ -14,6 +14,7 @@
   "author": "Juliana Barros",
   "license": "ISC",
   "devDependencies": {
+    "ajv": "^8.12.0",
     "cypress": "^8.7.0",
     "faker": "^5.5.3"
   }
