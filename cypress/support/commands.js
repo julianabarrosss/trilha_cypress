@@ -27,8 +27,15 @@
 import Ajv from 'ajv'
 const ajv = new Ajv({allErrors: true, verbose: true, strict: false})
 
-Cypress.Commands.add('contractValidation', () =>{
+Cypress.Commands.add('contractValidation', (res, schema, status) =>{
+    cy.fixture(`schemas/${schema}/${status}.json`).then( schema => {
+        const validate = ajv.compile(schema)
+        const valid = validate(res.body)
 
+        if(!valid){
+            
+        }
+    })
 })
 
 Cypress.Commands.add('postarUsuarioSemSucesso', () => {
