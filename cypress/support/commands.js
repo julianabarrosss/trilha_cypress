@@ -26,12 +26,18 @@ import Ajv from 'ajv'
 const ajv = new Ajv({allErrors: true, verbose: true, strict: false})
 
 Cypress.Commands.add('contractValidation', (res, schema, status) =>{
+    cy.log('Validando contrato para ' + schema + ' com status ' + status)
     cy.fixture(`schemas/${schema}/${status}.json`).then( schema => {
         const validate = ajv.compile(schema)
         const valid = validate(res.body)
 
         if(!valid){
-            console.log(validate)
+            var errors = ''
+            for(let each in validate.errors){
+                let err = validate.errors[each]
+                errors += `\n${err.instancePath} ${err.message}, but receive ${typeof err.data}`
+            }
+            throw new Error('Erros encontrados na validação de contrato, por favor veririque: ' + errors)
         }
     })
 })
@@ -42,10 +48,10 @@ Cypress.Commands.add('postarUsuarioSemSucesso', () => {
         url: '/usuarios',
         failOnStatusCode: true,
         body: {
-            "nome": "Joanne Howell",
-            "email": "Lauriane_Prohaska16@yahoo.com",
-            "password": "FimWitp3KxOH1Lg",
-            "administrador": true
+            "nome": "Fulano da Silva",
+            "email": "beltrano@compass.com.br",
+            "password": "teste",
+            "administrador": "true"
         }
     })
 })

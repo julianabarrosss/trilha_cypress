@@ -6,21 +6,25 @@ import Factory from "../fixtures/factory"
 
 describe('Casos de testes sobre a rota /usuarios da API Serverest', () => {
 
-    it.only('Deve buscar todos usuários cadastrados na Serverest', () => {
+    it('Deve buscar todos usuários cadastrados na Serverest', () => {
         Serverest.buscarUsuarios().then( res => {
+            cy.log('Será validado o contrato')
             cy.contractValidation(res, 'get-usuarios', 200)
-            //validaServerest.validarBuscaDeUsuarios(res)
+            validaServerest.validarBuscaDeUsuarios(res)
         })
 
     })
 
-    it('Não deve buscar um novo usuário administrador existente', () => {
+    it.only('Não deve postar um novo usuário administrador existente', () => {
         cy.postarUsuarioSemSucesso().then( res => {
-            cy.log(JSON.stringify(res))
-            expect(res).to.be.a('object')
-            expect(res.body.message).to.be.a('string')
+            cy.contractValidation(res, 'post-usuarios', 400)
             expect(res.body.message).to.be.eq('Este email já está sendo usado')
         })
+    })
+
+    it('Deve realizar login com sucesso', () => {
+        Serverest.buscarUsuarioParaLogin()
+        cy.get('@usuarioLogin').then
     })
 
     it('Deve buscar e salvar um usuário em um arquivo json', () => {

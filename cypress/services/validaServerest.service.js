@@ -9,11 +9,7 @@ export default class validaServerest {
     // Usuários //
 
     static validarBuscaDeUsuarios(resposta){
-        expect(resposta).to.be.a('object')
-        expect(resposta.body.quantidade).to.be.a('number')
-        expect(resposta.body).to.have.property('usuarios')
-        expect(resposta.body.usuarios).to.be.a('array')
-        expect(resposta.body.quantidade).to.be.greaterThan(3)
+        expect(resposta.body.quantidade).to.be.greaterThan(10)
 
     }
 
